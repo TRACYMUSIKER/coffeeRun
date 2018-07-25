@@ -1,0 +1,58 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+}
+
+.image-list {
+   display: inline-flex;
+   flex-direction: row; 
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap;
+}
+
+.image-list img {
+    width: 25em;
+    height: 30em;
+    padding: 5em;
+    object-position: cover;
+}
+
+h1 {
+    text-align: center;
+    font-family: "Billabong"; 
+    background-color: antiquewhite;
+}
+
+.transform {
+    transform: scale(2, 2);
+}
+
+.lightbox {
+    display: none;
+
+}
+
+.open {
+    display: flex;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(29, 26, 26, 0.7); 
+    justify-content: center;
+    align-items: center;
+}
+
+.imageContainer {
+    width: 75%;
+    height: 75%;
+}
+
+.lightbox-img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
