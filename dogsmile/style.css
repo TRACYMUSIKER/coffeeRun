@@ -31,7 +31,7 @@ h1 {
     transform: scale(2, 2);
 }
 
-.hide-lightbox {
+.lightbox {
     display: none;
 
 }

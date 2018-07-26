@@ -17,33 +17,23 @@ var dogImages = [
     { caption: "spaniel", url: 'https://i.dailymail.co.uk/i/pix/2011/06/26/article-2008264-0CBC6F8800000578-279_468x348.jpg'},
     { caption: "animated", url: 'https://media.giphy.com/media/10SPpae7SQxpe/giphy.gif'}
 ];
-var currentI;
-// var currentImage = 0;
-
 
 var container = document.querySelector('.image-list');
 var lightBoxImage = document.querySelector('.lightbox-img');
 var lightbox = document.querySelector('.lightbox');
-for (var index = 0; index < dogImages.length; index++) {
-    (function(){
-        var currentImageIndex = index;
-        var image = dogImages[index];
-        var createImage = document.createElement('img');
-        createImage.setAttribute('src', image.url);
 
-        var handleClick = function(event) {
-            currentI = currentImageIndexi;
-            lightBoxImage.setAttribute('src', event.currentTarget.src);
-            lightbox.setAttribute('class', 'open');
-        }
-        
-        // createImage.setAttribute('data-index', index);
-        createImage.addEventListener('click', handleClick);
+dogImages.forEach(function(image, i) {
+    var createImage = document.createElement('img');
+    createImage.setAttribute('src', image.url);
 
-        container.appendChild(createImage);
-    
-    })();
-}
+    var handleClick = function(event) {
+        currentI = i;
+        lightBoxImage.setAttribute('src', event.currentTarget.src);
+        lightbox.setAttribute('class', 'open');
+    }
+    createImage.addEventListener('click', handleClick);
+    container.appendChild(createImage);
+});
 
 var galleryNav = function(event) {
     switch (event.key) {
