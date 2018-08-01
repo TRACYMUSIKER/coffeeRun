@@ -2,36 +2,64 @@
 var pending = document.querySelector('.pending');
 var coffeeOrders = document.querySelector('.coffee-order-form');
 var orders = []
+var url = "https://dc-coffeerun.herokuapp.com/api/coffeeorders"
 
-var createRow = function(element) {
+var createRow = function(order) {
     var row = document.createElement('li');
-    row.textContent = element;
+    var para = document.createElement('p')
+    var deleteOption = document.createElement('button');
+    deleteOption.textContent = "Delete";
+    para.textContent = `Order from: ${order.emailAddress}, Item: ${order.coffee}, flavor: ${order.flavor}, caffeine: ${order.strength}, size: ${order.size}`;
+    row.appendChild(deleteOption);
+    row.appendChild(para);
     pending.appendChild(row);
+
+    deleteOption.addEventListener('click', function(event){
+        $.ajax({
+            url: `https://dc-coffeerun.herokuapp.com/api/coffeeorders/${order.emailAddress}`,
+            success: loadPage,
+            method: "DELETE",
+        });
+    });
 };
+
 
 coffeeOrders.addEventListener('submit', function(event) {
     event.preventDefault();
-    var emailInput = document.querySelector('[name="email"]').value;
-    var coffeeOrderInput =  document.querySelector('[name="Coffee_order"]').value;
-    var caffeineInput = document.querySelector('[name="caffeine_rating"]').value;
-    var flavorInput = document.querySelector('[name="Flavor_Shot"]').value;
-    var sizeInput = document.querySelector('[name="size"]:checked').value
-    var pageOrder = `Item: ${coffeeOrderInput}, flavor: ${flavorInput}, caffeine: ${caffeineInput}, size: ${sizeInput}`;
-    createRow(pageOrder);
-    var individualOrder = {"email": emailInput, "coffee": coffeeOrderInput, "flavor": flavorInput, "caffeine": caffeineInput, "size": sizeInput};
-    orders.push(individualOrder);
-    saveOrder();
-    });    
+    var emailAddress = document.querySelector('[name="email"]').value;
+    var coffee =  document.querySelector('[name="Coffee_order"]').value;
+    var strength = document.querySelector('[name="caffeine_rating"]').value;
+    var flavor = document.querySelector('[name="Flavor_Shot"]').value;
+    var size = document.querySelector('[name="size"]:checked').value
+    order = {
+        coffee: coffee,
+        flavor: flavor, 
+        strength: strength, 
+        size: size, 
+        emailAddress: emailAddress
+    }
+    createRow(order);
+    $.ajax({
+            url: url,
+            method: "POST",
+            data: order 
+    })
 
-var saveOrder = function() {
-    localStorage.setItem('storeOrder', JSON.stringify(orders));
+})
+
+
+
+
+var loadPage = function(){
+    var $pending = $('.pending');
+    $pending.empty();
+    $.ajax(url, {
+        method: "GET", 
+        success: function(coffeeOrders) {
+            for(key in coffeeOrders) {
+                createRow(coffeeOrders[key]);
+            }
+        }
+    })
 };
-
-var loadOrders = function() {
-    var ordersAsString = localStorage.getItem('storeOrder');
-    orders = JSON.parse(ordersAsString);
-    createRow(ordersAsString);
-};
-
-loadOrders();
-
+loadPage();

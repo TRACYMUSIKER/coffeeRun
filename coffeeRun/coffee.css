@@ -15,8 +15,9 @@ html, body {
     margin: 0;
     font-size: 20px;
     background: url("./cup_of_coffee.jpg") top, 50%;
-    background-size: 60
+    background-size: 700px;
     background-repeat: no-repeat;
+    background-
 }
 
 .boxed {
@@ -28,14 +29,10 @@ html, body {
     border: 1px grey solid;
     align-items: center;
     align-content: center;
-    width: 50%;
-    height: 75%;
     /* background-image: url("./cup_of_coffee.jpg");
     background-size: 100%;
     background-repeat: no-repeat; */
     object-fit: contain; 
-    
-
 }
 
 label {
@@ -76,4 +73,8 @@ input[name="Flavor_Shot"] {
 }
 input[name="email"] {
     background-color: aquamarine
+}
+
+.pending {
+    font-size: 12px;
 }
