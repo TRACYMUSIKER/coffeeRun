@@ -17,7 +17,7 @@ var createRow = function(order) {
     deleteOption.addEventListener('click', function(event){
         $.ajax({
             url: `https://dc-coffeerun.herokuapp.com/api/coffeeorders/${order.emailAddress}`,
-            success: loadPage,
+            success: loadPageNow,
             method: "DELETE",
         });
     });
@@ -50,7 +50,7 @@ coffeeOrders.addEventListener('submit', function(event) {
 
 
 
-var loadPage = function(){
+var loadPageNow = function(){
     var $pending = $('.pending');
     $pending.empty();
     $.ajax(url, {
@@ -62,4 +62,4 @@ var loadPage = function(){
         }
     })
 };
-loadPage();
+loadPageNow();
