@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="coffee.css">
+    <title>coffeerun</title>
+</head>
+<body class="container">
+    <div class="boxed">
+        <h1 class="CoffeeRun"> CoffeeRun </h1>
+        <form class="coffee-order-form" action"" method="post">
+            <label>
+                <span class="input-labels"> Coffee Order </span>
+                <input name="Coffee_order">
+            </label>
+            <label>
+                <span class="input-labels"> Email </span>
+                <input name="email" type="email">
+            </label>
+            <div class="sizes">
+                <label> Small
+                    <input type="radio" name="size" value="small" checked>
+                </label>
+                <label> Medium
+                    <input type="radio" name="size" value="medium">
+                </label>
+                <label> Large
+                    <input type="radio" name="size" value="large">
+                </label>
+            </div>
+            <label>
+                <span class="input-labels"> Flavor Shot</span>
+                <input name="Flavor_Shot" list="flavors">
+                <datalist id="flavors">
+                    <option value="None">
+                    <option value="Caramel">
+                    <option value="Mocha">
+                    <option value="Vanilla">
+                </datalist>
+            </label>
+            <label>
+                <span class="input-labels">Caffeine Rating</span>
+                <input name="caffeine_rating" type="range" min="0" max="200">
+            </label>
+            <div class="Submissions">
+                <input name="submit" type="submit" value="Submit">
+                <input name="reset" type="submit" value="Reset">
+            </div>
+        </form>
+        
+    </div>
+    <div class="pending"></div> 
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="coffee.js"></script>
+</body>
+</html>

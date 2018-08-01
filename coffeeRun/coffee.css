@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+}
+
+input, textarea {
+    display: block;
+    appearance: none;
+
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+    background: url("./cup_of_coffee.jpg") top, 50%;
+    background-size: 700px;
+    background-repeat: no-repeat;
+    background-
+}
+
+.boxed {
+    box-sizing: border-box;
+    padding: 2em;
+    padding-left: 4em;
+    /* padding-top: 2em; */
+    border-radius: 20em;
+    border: 1px grey solid;
+    align-items: center;
+    align-content: center;
+    /* background-image: url("./cup_of_coffee.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat; */
+    object-fit: contain; 
+}
+
+label {
+    object-fit: contain; 
+    font-family: billabong;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column; 
+}
+
+
+.Submissions {
+    display: flex;
+    flex-direction: row;
+}
+
+.input-labels {
+    object-fit: contain;
+    align-content: left;
+    font-family: billabong;
+}
+
+.coffee-orders {
+    object-fit: contain;
+    left: 30px;
+    
+}
+input[name="Coffee_order"] { 
+    background-color: aquamarine
+}
+input[name="Flavor_Shot"] { 
+    background-color: aquamarine
+}
+input[name="email"] {
+    background-color: aquamarine
+}
+
+.pending {
+    font-size: 12px;
+}
